@@ -1,6 +1,6 @@
 import { faker} from '@faker-js/faker';
 
-class User {
+export class User {
     name: string;
     location: {
         lat: number;
@@ -14,6 +14,3 @@ class User {
         }
     }
 }
-
-const testUser = new User();
-console.log(testUser.location, testUser.name);

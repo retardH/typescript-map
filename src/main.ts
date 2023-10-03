@@ -6,6 +6,6 @@ import {CustomMap} from "./CustomMap.ts";
 let testUser = new User();
 let testCompany = new Company();
 
-console.log('user and the company', testUser, testCompany);
-
-new CustomMap('map');
+const customMap = new CustomMap('map'); 
+customMap.addMarker(testUser);
+customMap.addMarker(testCompany);

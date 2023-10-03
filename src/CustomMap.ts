@@ -1,5 +1,10 @@
-import { User} from "./User.ts";
-import {Company} from "./Company.ts";
+interface Mappable {
+    location: {
+        lat: number;
+        lng: number;
+    }
+    markerContent(): string;
+}
 
 export class CustomMap {
     private readonly googleMap: google.maps.Map;
@@ -18,11 +23,21 @@ export class CustomMap {
         });
     }
 
-    addUserMarker() {
+    addMarker(mappable: Mappable): void {
+        const marker = new google.maps.Marker({
+            map: this.googleMap,
+            position: {
+                lat: mappable.location.lat,
+                lng: mappable.location.lng,
+            }
+        });
+        marker.addListener('click', () => {
+            const infoWindow = new google.maps.InfoWindow({
+                content: mappable.markerContent(),
+            });
 
-    }
-
-    addCompanyMarker() {
+            infoWindow.open(this.googleMap, marker);
+        })
 
     }
 }

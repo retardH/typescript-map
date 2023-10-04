@@ -1,4 +1,4 @@
-interface Mappable {
+export interface Mappable {
     location: {
         lat: number;
         lng: number;
@@ -8,10 +8,6 @@ interface Mappable {
 
 export class CustomMap {
     private readonly googleMap: google.maps.Map;
-
-    public get googleMapInstance() {
-        return this.googleMap;
-    }
 
     constructor(id: string) {
         this.googleMap = new google.maps.Map(document.getElementById(id) as HTMLElement, {
